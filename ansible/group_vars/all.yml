@@ -1,0 +1,5 @@
+docker_compose_file: /opt/devops/docker-compose.tools.yml
+
+jenkins_port: 8080
+sonarqube_port: 9000
+nexus_port: 8081

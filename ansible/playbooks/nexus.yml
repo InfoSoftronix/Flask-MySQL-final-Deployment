@@ -1,0 +1,12 @@
+- name: Nexus Service Check
+  hosts: tools
+  become: true
+
+  tasks:
+    - name: Verify Nexus container
+      command: docker ps
+      register: docker_output
+
+    - name: Show Nexus container status
+      debug:
+        msg: "{{ docker_output.stdout }}"

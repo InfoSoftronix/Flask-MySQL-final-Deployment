@@ -1,0 +1,19 @@
+- name: Setup DevOps Tools Stack
+  hosts: tools
+  become: true
+
+  tasks:
+    - name: Create DevOps directory
+      file:
+        path: /opt/devops
+        state: directory
+
+    - name: Copy Docker Compose file
+      copy:
+        src: ../../userdata/docker-compose.tools.yml
+        dest: "{{ docker_compose_file }}"
+
+    - name: Start DevOps tools
+      command: docker compose -f {{ docker_compose_file }} up -d
+      args:
+        chdir: /opt/devops

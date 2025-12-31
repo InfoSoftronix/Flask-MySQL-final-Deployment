@@ -1,0 +1,12 @@
+- name: Jenkins Service Check
+  hosts: tools
+  become: true
+
+  tasks:
+    - name: Check Jenkins container
+      command: docker ps
+      register: docker_output
+
+    - name: Show Jenkins container status
+      debug:
+        msg: "{{ docker_output.stdout }}"

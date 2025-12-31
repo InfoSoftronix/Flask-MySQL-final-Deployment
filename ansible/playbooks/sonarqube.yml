@@ -1,0 +1,12 @@
+- name: SonarQube Service Check
+  hosts: tools
+  become: true
+
+  tasks:
+    - name: Verify SonarQube container
+      command: docker ps
+      register: docker_output
+
+    - name: Show SonarQube container status
+      debug:
+        msg: "{{ docker_output.stdout }}"
