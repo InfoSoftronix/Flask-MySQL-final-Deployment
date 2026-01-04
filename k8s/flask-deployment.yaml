@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask
+  name: flask-app
   namespace: flask-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: flask
+      app: flask-app
   template:
     metadata:
       labels:
-        app: flask
+        app: flask-app
     spec:
       containers:
-        - name: flask
+        - name: flask-app
           image: 585008079552.dkr.ecr.ap-south-1.amazonaws.com/flask-mysql-app:latest
           ports:
             - containerPort: 5000
