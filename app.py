@@ -5,7 +5,7 @@ from flask_mysqldb import MySQL
 
 import os
 
-app.config['MYSQL_DB'] = os.getenv("MYSQL_DB", "employee_db")
+app.config['MYSQL_DATABASE'] = os.getenv("MYSQL_DATABASE", "employee_db")
 app.config['MYSQL_USER'] = os.getenv("MYSQL_USER", "root")
 app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD", "root")
 app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST", "localhost")
