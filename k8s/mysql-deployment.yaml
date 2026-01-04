@@ -25,11 +25,11 @@ spec:
                   name: mysql-secret
                   key: MYSQL_ROOT_PASSWORD
 
-            - name: MYSQL_DATABASE
+            - name: MYSQL_DB
               valueFrom:
                 configMapKeyRef:
                   name: mysql-config
-                  key: MYSQL_DATABASE
+                  key: MYSQL_DB
 
             - name: MYSQL_USER
               valueFrom:
