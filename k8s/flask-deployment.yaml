@@ -19,26 +19,30 @@ spec:
           ports:
             - containerPort: 5000
           env:
-            - name: MYSQL_HOST
+            # 1. DATABASE HOST
+            - name: MYSQL_HOST       # Python looks for this
               valueFrom:
                 configMapKeyRef:
                   name: flask-config
-                  key: MYSQL_HOST
+                  key: DB_HOST       # Matches your ConfigMap Key
 
-            - name: MYSQL_NAME
+            # 2. DATABASE NAME
+            - name: MYSQL_DB         # Python looks for this
               valueFrom:
                 configMapKeyRef:
                   name: flask-config
-                  key: MYSQL_NAME
+                  key: DB_NAME       # Matches your ConfigMap Key
 
-            - name: MYSQL_USER
+            # 3. DATABASE USER
+            - name: MYSQL_USER       # Python looks for this
               valueFrom:
                 configMapKeyRef:
                   name: flask-config
-                  key: MYSQL_USER
+                  key: DB_USER       # Matches your ConfigMap Key
 
-            - name: MYSQL_PASSWORD
+            # 4. DATABASE PASSWORD
+            - name: MYSQL_PASSWORD   # Python looks for this
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secret
-                  key: MYSQL_PASSWORD
+                  name: mysql-secret # 🟢 CORRECTED: Matches 'kubectl get secret' output
+                  key: MYSQL_PASSWORD # Matches key from your earlier mysql setup
